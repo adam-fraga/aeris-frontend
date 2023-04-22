@@ -1,0 +1,7 @@
+#mainSectionWrapper {
+  display: flex;
+  justify-content: center;
+  height: 90vh;
+  width: 100%;
+  background-color: #282a31;
+}

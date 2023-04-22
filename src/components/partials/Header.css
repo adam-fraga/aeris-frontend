@@ -1,0 +1,6 @@
+#header {
+  height: 10vh;
+  display: flex;
+  flex-grow: 3;
+  justify-content: space-evenly;
+}

@@ -1,35 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Sidebar } from "./components/sidebar/Sidebar";
+import { Header } from "./components/partials/Header";
+import { AppWrapper } from "./components/wrappers/AppWrapper";
+import { MainSectionWrapper } from "./components/wrappers/MainSectionWrapper";
+import { Container } from "./components/wrappers/Container";
+import { MenuWrapper } from "./components/wrappers/MenuWrapper";
+import { Navigation } from "./components/menus/Navigation";
+import { UserPortal } from "./components/menus/UserPortal";
+import { MainViewAreaWrapper } from "./components/wrappers/MainViewAreaWrapper";
+import { SetttingsWrapper } from "./components/wrappers/SetttingsWrapper";
+import { Settings } from "./components/dynamic-views/Settings";
+import { ContextProvider } from "./components/context/ContextProvider";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <ContextProvider>
+        <AppWrapper>
+          <Sidebar>
+            <MenuWrapper rowLayout={false}>
+              <Navigation rowLayout={false} />
+            </MenuWrapper>
+          </Sidebar>
+          <Container>
+            <Header>
+              <MenuWrapper rowLayout={true}>
+                <Navigation rowLayout={true} />
+                <UserPortal />
+              </MenuWrapper>
+            </Header>
+            <MainSectionWrapper>
+              <MainViewAreaWrapper />
+              <SetttingsWrapper>
+                <Settings />
+                <Settings />
+              </SetttingsWrapper>
+            </MainSectionWrapper>
+          </Container>
+        </AppWrapper>
+      </ContextProvider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
